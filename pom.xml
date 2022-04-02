@@ -7,12 +7,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-        <javafx.version>17.0.1</javafx.version>
-        <charm.version>6.1.0</charm.version>
-        <glisten.afterburner.version>2.1.0</glisten.afterburner.version>
-        <attach.version>4.0.13</attach.version>
-        <connect.version>2.0.1</connect.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <javafx.version>18</javafx.version>
         <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
         <gluonfx.maven.plugin.version>1.0.12</gluonfx.maven.plugin.version>
         <gluonfx.target>host</gluonfx.target>
@@ -29,7 +25,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>18</version>
+            <version>${javafx.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -50,7 +46,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>17</release>
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -64,7 +60,7 @@
             <plugin>
                 <groupId>com.gluonhq</groupId>
                 <artifactId>gluonfx-maven-plugin</artifactId>
-                <version>1.0.12</version>
+                <version>${gluonfx.maven.plugin.version}</version>
                 <configuration>
                     <target>${gluonfx.target}</target>
                     <mainClass>dev.vultureweb.todofx/dev.vultureweb.todofx.Main</mainClass>

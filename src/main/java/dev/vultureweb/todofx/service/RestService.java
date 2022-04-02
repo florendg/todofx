@@ -18,9 +18,7 @@ import java.util.List;
 
 public class RestService {
 
-   public ObservableList<TodoItem> getAll() {
-      return FXCollections.emptyObservableList();
-   }
+   private static final System.Logger LOG = System.getLogger(RestService.class.getName());
 
    public ObservableList<TodoItem> getTodoItems() {
       ObservableList<TodoItem> list = FXCollections.observableArrayList();
@@ -36,7 +34,7 @@ public class RestService {
                .thenApply(this::parseData)
                .thenAccept(todoItems -> Platform.runLater(()-> list.addAll(todoItems)));
       } catch (Exception exception) {
-         System.err.println("Failed to retrieve data:" + exception.getMessage());
+         LOG.log(System.Logger.Level.ERROR,"Failed to retrieve data:" + exception.getMessage());
       }
       return list;
    }
@@ -47,7 +45,7 @@ public class RestService {
          TodoItem[] items = mapper.readValue(reader,TodoItem[].class);
          return Arrays.stream(items).toList();
       } catch (IOException ioException) {
-         System.err.println("Failed " + ioException.getMessage());
+         LOG.log(System.Logger.Level.ERROR,"Failed " + ioException.getMessage());
          return List.of();
       }
    }
